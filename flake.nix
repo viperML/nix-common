@@ -20,5 +20,7 @@
         mapAttrs'
         (name: _: nameValuePair (removeSuffix ".nix" name) (import (./modules/home-manager + "/${name}")))
         (readDir ./modules/home-manager);
+
+      lib = import ./lib.nix nixpkgs.lib;
     };
 }
