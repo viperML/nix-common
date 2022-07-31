@@ -3,38 +3,20 @@
   lib,
   inputs ? throw "Please pass your inputs to extraSpecialArgs",
   ...
-}:
-with lib; let
-  folder-inputs = mapAttrs' (n: v: nameValuePair "nix/inputs/${n}" {source = v.outPath;}) inputs;
+}: {
+  xdg.configFile = with lib; mapAttrs' (n: v: nameValuePair "nix/inputs/${n}" {source = v.outPath;}) inputs;
 
-  registry = builtins.toJSON {
-    flakes =
-      mapAttrsToList (n: v: {
-        exact = true;
-        from = {
-          id = n;
-          type = "indirect";
-        };
-        to = {
-          path = v.outPath;
-          type = "path";
-        };
-      })
-      inputs;
-    version = 2;
-  };
-in {
-  xdg.configFile =
-    folder-inputs
-    // {
-      "nix/registry.json".text = registry;
+  nix = {
+    registry = with lib; mapAttrs' (name: value: nameValuePair name {flake = value;}) inputs;
+    settings = {
+      "flake-registry" = "${config.xdg.configHome}/nix/registry.json";
     };
+  };
 
-  home.sessionVariables ={
+  home.sessionVariables = {
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
     NIXPKGS_CONFIG = "";
   };
-
 
   home.activation.useFlakeChannels = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p $HOME/.nix-defexpr

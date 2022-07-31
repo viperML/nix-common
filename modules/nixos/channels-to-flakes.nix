@@ -6,7 +6,9 @@
 with lib; {
   nix = {
     registry = mapAttrs' (name: value: nameValuePair name {flake = value;}) inputs;
-
+    settings = {
+      "flake-registry" = "/etc/nix/registry.json";
+    };
     nixPath = [
       "nixpkgs=/etc/nix/inputs/nixpkgs"
     ];
