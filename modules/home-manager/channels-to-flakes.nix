@@ -1,34 +1,37 @@
 {
+  inputs ? throw "Pass your flake inputs to NixOS with specialArgs",
   config,
   lib,
-  inputs ? throw "Please pass your inputs to extraSpecialArgs",
   ...
 }: {
-  xdg.configFile = with lib; mapAttrs' (n: v: nameValuePair "nix/inputs/${n}" {source = v.outPath;}) inputs;
-
-  nix = {
-    registry = with lib; mapAttrs' (name: value: nameValuePair name {flake = value;}) inputs;
-    settings = {
-      "flake-registry" = "${config.xdg.configHome}/nix/registry.json";
+  options = with lib; {
+    nix.inputsToPin = mkOption {
+      type = with types; listOf str;
+      default = ["nixpkgs"];
+      example = ["nixpkgs" "nixpkgs-master"];
+      description = ''
+        Names of flake inputs to pin
+      '';
     };
   };
 
-  home.sessionVariables = {
-    NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
-    NIXPKGS_CONFIG = "";
+  config = {
+    nix = {
+      registry = lib.listToAttrs (map (name: lib.nameValuePair name {flake = inputs.${name};}) config.nix.inputsToPin);
+      settings."flake-registry" = "${config.xdg.configHome}/nix/registry.json";
+    };
+
+    xdg.configFile =
+      lib.listToAttrs (map (name: lib.nameValuePair "nix/inputs/${name}" {source = inputs.${name};}) config.nix.inputsToPin)
+      // {
+        "nixpkgs".source = lib.mkDefault (config.lib.file.mkOutOfStoreSymlink "/dev/null");
+      };
+
+    home = {
+      sessionVariables = {
+        NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
+        NIXPKGS_CONFIG = "";
+      };
+    };
   };
-
-  home.activation.useFlakeChannels = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    mkdir -p $HOME/.nix-defexpr
-    $DRY_RUN_CMD rm -rf $VERBOSE_ARG $HOME/.nix-defexpr/channels
-    $DRY_RUN_CMD ln -sf $VERBOSE_ARG /dev/null $HOME/.nix-defexpr/channels
-    $DRY_RUN_CMD rm -rf $VERBOSE_ARG $HOME/.nix-defexpr/channels_root
-    $DRY_RUN_CMD ln -sf $VERBOSE_ARG /dev/null $HOME/.nix-defexpr/channels_root
-
-    $DRY_RUN_CMD rm -rf $VERBOSE_ARG $HOME/.nix-channels
-    $DRY_RUN_CMD ln -sf $VERBOSE_ARG /dev/null $HOME/.nix-channels
-
-    $DRY_RUN_CMD rm -rf $VERBOSE_ARG $HOME/.config/nixpkgs
-    $DRY_RUN_CMD ln -sf $VERBOSE_ARG /dev/null $HOME/.config/nixpkgs
-  '';
 }

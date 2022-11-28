@@ -1,19 +1,31 @@
 {
-  inputs ? throw "Please add the flake inputs to specialArgs",
+  inputs ? throw "Pass your flake inputs to NixOS with specialArgs",
   lib,
+  config,
   ...
-}:
-with lib; {
-  nix = {
-    registry = mapAttrs' (name: value: nameValuePair name {flake = value;}) inputs;
-    settings = {
-      "flake-registry" = "/etc/nix/registry.json";
+}: {
+  options = with lib; {
+    nix.inputsToPin = mkOption {
+      type = with types; listOf str;
+      default = ["nixpkgs"];
+      example = ["nixpkgs" "nixpkgs-master"];
+      description = ''
+        Names of flake inputs to pin
+      '';
     };
-    nixPath = [
-      "nixpkgs=/etc/nix/inputs/nixpkgs"
-    ];
   };
 
-  environment.etc = mapAttrs' (name: value: nameValuePair "nix/inputs/${name}" {source = value.outPath;}) inputs;
-  environment.variables.NIXPKGS_CONFIG = lib.mkForce "";
+  config = {
+    nix = {
+      registry = lib.listToAttrs (map (name: lib.nameValuePair name {flake = inputs.${name};}) config.nix.inputsToPin);
+      settings."flake-registry" = "/etc/nix/registry.json";
+      nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
+    };
+
+    environment = {
+      etc = lib.listToAttrs (map (name: lib.nameValuePair "nix/inputs/${name}" {source = inputs.${name};}) config.nix.inputsToPin);
+      # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/programs/environment.nix#L20
+      variables.NIXPKGS_CONFIG = lib.mkForce "";
+    };
+  };
 }
