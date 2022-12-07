@@ -13,6 +13,7 @@
       channels-to-flakes = ./modules/nixos/channels-to-flakes.nix;
       hm-standalone-shim = ./modules/nixos/hm-standalone-shim.nix;
       xdg = ./modules/nixos/xdg.nix;
+      light-daemon = ./modules/nixos/light-daemon.nix;
     };
 
     homeModules = {
