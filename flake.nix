@@ -9,12 +9,21 @@
     self,
     nixpkgs-lib,
   }: {
-    nixosModules = {
-      channels-to-flakes = ./modules/nixos/channels-to-flakes.nix;
-      hm-standalone-shim = ./modules/nixos/hm-standalone-shim.nix;
-      xdg = ./modules/nixos/xdg.nix;
-      light-daemon = ./modules/nixos/light-daemon.nix;
-    };
+    nixosModules = let
+      modules = {
+        # channels-to-flakes = ./modules/nixos/channels-to-flakes.nix;
+        sane = ./modules/nixos/sane.nix;
+        xdg = ./modules/nixos/xdg.nix;
+        hm-shim = ./modules/nixos/hm-shim.nix;
+        well-known = ./modules/nixos/well-known.nix;
+      };
+    in
+      modules
+      // {
+        default = {
+          imports = builtins.attrValues modules;
+        };
+      };
 
     homeModules = {
       channels-to-flakes = ./modules/home-manager/channels-to-flakes.nix;
