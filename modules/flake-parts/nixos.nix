@@ -11,7 +11,7 @@
   }: {
     options = {
       inputs = lib.mkOption {
-        type = with lib.types; lazyAttrsOf anything;
+        type = with lib.types; lazyAttrsOf unspecified;
         default = withSystem config.nixpkgs.hostPlatform.system ({
           inputs',
           self',

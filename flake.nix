@@ -30,9 +30,16 @@
       channels-to-flakes = ./modules/home-manager/channels-to-flakes.nix;
     };
 
-    flakeModules = {
-      nixos = ./modules/flake-parts/nixos.nix;
-    };
+    flakeModules = let
+      modules = {
+        nixos = ./modules/flake-parts/nixos.nix;
+        home-manager = ./modules/flake-parts/home-manager.nix;
+      };
+    in
+      modules
+      // {
+        default.imports = builtins.attrValues modules;
+      };
 
     lib = import ./lib.nix nixpkgs-lib.lib;
   };
