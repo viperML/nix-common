@@ -32,6 +32,8 @@
   systemd.services.systemd-networkd.stopIfChanged = false;
   systemd.services.systemd-resolved.stopIfChanged = false;
 
+  time.timeZone = lib.mkDefault "UTC";
+
   nix.settings = import ../nix-conf.nix;
   nix.daemonCPUSchedPolicy = lib.mkDefault "batch";
   nix.daemonIOSchedClass = lib.mkDefault "idle";
