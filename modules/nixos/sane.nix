@@ -64,4 +64,11 @@
     Defaults lecture=never
     Defaults passprompt="[31m sudo: password for %p@%h, running as %U:[0m "
   '';
+
+  security.rtkit.enable = config.services.pipewire.enable;
+  services.pipewire = {
+    enable = config.services.xserver.enable;
+    pulse.enable = true;
+    alsa.enable = true;
+  };
 }
