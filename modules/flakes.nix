@@ -16,7 +16,7 @@ in {
 
     packages = lib.mkOption {
       type = with lib.types; lazyAttrsOf unspecified;
-      default = myLib.mkPackages config.inputs config.nixpkgs.hostPlatform.system;
+      default = myLib.mkPackages config.inputs config.nixpkgs.hostPlatform.system or config.nixpkgs.system;
       readOnly = true;
     };
   };
