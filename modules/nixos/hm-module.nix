@@ -1,6 +1,7 @@
-{config, ...}: {
+homeModules: {config, ...}: {
+  _file = ./hm-module.nix;
   home-manager.sharedModules = [
-    ../home-manager
+    homeModules.default
     {
       inherit (config) inputs;
     }
