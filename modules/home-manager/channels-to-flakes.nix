@@ -1,9 +1,10 @@
-{
-  inputs ? throw "Pass your flake inputs to NixOS with specialArgs",
+moduleArgs @ {
   config,
   lib,
   ...
-}: {
+}: let
+  inputs = moduleArgs.inputs or config.inputs;
+in {
   options = with lib; {
     nix.inputsToPin = mkOption {
       type = with types; listOf str;
