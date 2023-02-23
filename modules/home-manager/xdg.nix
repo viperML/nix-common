@@ -5,5 +5,6 @@ in {
   xdg.configFile = {
     inherit (template) npmrc;
     "python/pythonrc" = template.pythonrc;
+    "user-dirs.dirs" = template.user-dirs;
   };
 }

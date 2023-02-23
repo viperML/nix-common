@@ -5,5 +5,6 @@ in {
 
   environment.etc = {
     inherit (template) pythonrc npmrc;
+    "xdg/user-dirs.defaults" = template.user-dirs;
   };
 }
