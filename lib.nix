@@ -20,7 +20,7 @@ lib: {
      };
    }
    */
-  mkPackages = inputs: system:
+  mkPackages = system: inputs:
     builtins.mapAttrs (name: value: let
       legacyPackages = value.legacyPackages.${system} or {};
       packages = value.packages.${system} or {};

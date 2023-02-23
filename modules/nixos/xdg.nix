@@ -1,8 +1,9 @@
-{
-  environment.sessionVariables = {
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_STATE_HOME = "$HOME/.local/state";
-    XDG_CACHE_HOME = "$HOME/.cache";
+let
+  template = import ../xdg-template.nix "nixos";
+in {
+  environment.sessionVariables = template.env;
+
+  environment.etc = {
+    inherit (template) pythonrc npmrc;
   };
 }

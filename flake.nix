@@ -18,19 +18,17 @@
         ssh = ./modules/nixos/ssh.nix;
         well-known = ./modules/nixos/well-known.nix;
         xdg = ./modules/nixos/xdg.nix;
-        flakes = ./modules/flakes.nix;
       };
     in
       defaultModules
       // {
         default.imports = builtins.attrValues defaultModules;
-        hm-module = import ./modules/nixos/hm-module.nix self.homeModules;
       };
 
     homeModules = let
       defaultModules = {
         channels-to-flakes = ./modules/home-manager/channels-to-flakes.nix;
-        flakes = ./modules/flakes.nix;
+        xdg = ./modules/home-manager/xdg.nix;
       };
     in
       defaultModules

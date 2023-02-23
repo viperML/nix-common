@@ -1,10 +1,9 @@
-moduleArgs @ {
+{
   lib,
   config,
+  inputs ? throw "Pass inputs to specialArgs or extraSpecialArgs",
   ...
-}: let
-  inputs = moduleArgs.inputs or config.inputs;
-in {
+}: {
   options = with lib; {
     nix.inputsToPin = mkOption {
       type = with types; listOf str;
