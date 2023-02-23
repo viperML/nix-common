@@ -6,6 +6,7 @@ system: let
   XDG_RUNTIME_DIR = "$XDG_RUNTIME_DIR";
 in {
   env = {
+    inherit XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME XDG_STATE_HOME;
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
     CABAL_CONFIG = "${XDG_CONFIG_HOME}/cabal/config";
     CABAL_DIR = "${XDG_DATA_HOME}/cabal";
