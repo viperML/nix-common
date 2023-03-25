@@ -8,7 +8,7 @@ in {
   env = {
     inherit XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME XDG_STATE_HOME;
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
-    CABAL_CONFIG = "/dev/null";
+    # CABAL_CONFIG = "/dev/null";
     CABAL_DIR = "${XDG_DATA_HOME}/cabal";
     CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
     ERRFILE = "${XDG_CACHE_HOME}/X11/xsession-errors";
