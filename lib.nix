@@ -1,25 +1,25 @@
 lib: {
   /*
-   Utility function to collect the packages or legacyPackages for a system.
-   Because typing `inputs.nixpkgs.legacyPackages.${system}.package` is a PITA,
-   this function converts it to `result.package`
+  Utility function to collect the packages or legacyPackages for a system.
+  Because typing `inputs.nixpkgs.legacyPackages.${system}.package` is a PITA,
+  this function converts it to `result.package`
 
-   It can be useful to pair with `speciaArgs`:
-   specialArgs = {
-     packages = mkPackages inputs;
-   }
-   So you have access in your modules to `packages.<input>.<package name>`
+  It can be useful to pair with `speciaArgs`:
+  specialArgs = {
+    packages = mkPackages inputs;
+  }
+  So you have access in your modules to `packages.<input>.<package name>`
 
-   mkPackages inputs "x86_64-linux"
-   => {
-     nixpkgs = {
-       package1 = ...; package2 = ...;
-     };
-     other-input = {
-       package1 = ...; package2 = ...;
-     };
-   }
-   */
+  mkPackages inputs "x86_64-linux"
+  => {
+    nixpkgs = {
+      package1 = ...; package2 = ...;
+    };
+    other-input = {
+      package1 = ...; package2 = ...;
+    };
+  }
+  */
   mkPackages = system: inputs:
     builtins.mapAttrs (name: value: let
       legacyPackages = value.legacyPackages.${system} or {};
@@ -29,10 +29,10 @@ lib: {
     inputs;
 
   /*
-   Usage in a flake:
-   mkFlakeVersion "1.4" self
-   => "1.4+date=YYYY-MM-DD"
-   */
+  Usage in a flake:
+  mkFlakeVersion "1.4" self
+  => "1.4+date=YYYY-MM-DD"
+  */
   mkFlakeVersion = version: longDate:
     lib.concatStrings [
       (
