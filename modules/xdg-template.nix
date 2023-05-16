@@ -6,7 +6,6 @@ system: let
   XDG_RUNTIME_DIR = "$XDG_RUNTIME_DIR";
 in {
   env = {
-    inherit XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME XDG_STATE_HOME;
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
     # CABAL_CONFIG = "/dev/null";
     CABAL_DIR = "${XDG_DATA_HOME}/cabal";
@@ -35,6 +34,15 @@ in {
     CARGO_HOME = "${XDG_DATA_HOME}/cargo";
     NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
     PLATFORMIO_CORE_DIR = "${XDG_DATA_HOME}/platformio";
+  };
+
+  xdg_env = {
+    inherit
+      XDG_DATA_HOME
+      XDG_CONFIG_HOME
+      XDG_CACHE_HOME
+      XDG_STATE_HOME
+      ;
   };
 
   npmrc.text = ''
