@@ -18,6 +18,7 @@
         ssh = ./modules/nixos/ssh.nix;
         well-known = ./modules/nixos/well-known.nix;
         xdg = ./modules/nixos/xdg.nix;
+        root-clean = ./modules/nixos/root-clean.nix;
       };
     in
       defaultModules
