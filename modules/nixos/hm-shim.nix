@@ -1,3 +1,3 @@
 {lib, ...}: {
-  environment.extraInit = lib.fileContents ../home-manager/hm-shim.sh;
+  environment.extraInit = lib.mkAfter (lib.fileContents ../home-manager/hm-shim.sh);
 }

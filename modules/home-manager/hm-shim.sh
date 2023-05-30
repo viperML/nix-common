@@ -1,15 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 source_hm() {
-  local prefix="$1"
-  local hm_vars="etc/profile.d/hm-session-vars.sh"
-  local file="$prefix/$hm_vars"
-  if [ -f "$file" ]; then
+  _prefix="$1"
+  _hm_vars="etc/profile.d/hm-session-vars.sh"
+  _file="$_prefix/$_hm_vars"
+  if [ -f "$_file" ]; then
     # shellcheck source=/dev/null
-    source "$file"
+    . "$_file"
   fi
 }
 
-source_hm "/etc/profiles/per-user/$USER"
-source_hm "/nix/var/nix/profiles/per-user/$USER/profile"
-source_hm "$HOME/.local/state/nix/profiles/profile"
+for _profile in $NIX_PROFILES; do
+  source_hm "$_profile"
+done
