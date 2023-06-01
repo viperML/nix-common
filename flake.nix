@@ -31,6 +31,7 @@
         channels-to-flakes = ./modules/home-manager/channels-to-flakes.nix;
         flake-path = ./modules/home-manager/flake-path.nix;
         xdg = ./modules/home-manager/xdg.nix;
+        sane = ./modules/home-manager/sane.nix;
       };
     in
       defaultModules
