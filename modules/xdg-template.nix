@@ -34,6 +34,9 @@ in {
     CARGO_HOME = "${XDG_DATA_HOME}/cargo";
     NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
     PLATFORMIO_CORE_DIR = "${XDG_DATA_HOME}/platformio";
+    NUGET_PACKAGES = "${XDG_CACHE_HOME}/NuGetPackages";
+    KERAS_HOME = "${XDG_STATE_HOME}/keras";
+    SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
   };
 
   xdg_env = {
