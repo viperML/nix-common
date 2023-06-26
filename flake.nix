@@ -19,6 +19,7 @@
         well-known = ./modules/nixos/well-known.nix;
         xdg = ./modules/nixos/xdg.nix;
         root-clean = ./modules/nixos/root-clean.nix;
+        fhs = ./modules/nixos/fhs.nix;
       };
     in
       defaultModules
