@@ -21,15 +21,15 @@
       settings."flake-registry" = "${config.xdg.configHome}/nix/registry.json";
     };
 
-    xdg.configFile =
-      lib.listToAttrs (map (name: lib.nameValuePair "nix/inputs/${name}" {source = inputs.${name};}) config.nix.inputsToPin)
-      // {
-        "nixpkgs".source = lib.mkDefault (config.lib.file.mkOutOfStoreSymlink "/dev/null");
-      };
+    xdg.configFile = {
+      "nixpkgs".source = lib.mkDefault (config.lib.file.mkOutOfStoreSymlink "/var/empty");
+    };
 
     home = {
       sessionVariables = {
-        NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
+        NIX_PATH = let
+          prev = "$\{NIX_PATH:+:$NIX_PATH}";
+        in "nixpkgs=flake:nixpkgs${prev}";
         NIXPKGS_CONFIG = "";
       };
     };
