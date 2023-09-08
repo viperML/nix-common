@@ -19,6 +19,9 @@
       zlib
       libsecret
       fuse
+      fuse3
+      nss
+      expat
     ];
   };
 }
