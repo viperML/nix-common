@@ -52,4 +52,6 @@
   environment.profiles = [
     "$HOME/.local/state/nix/profiles/profile"
   ];
+
+  services.xserver.desktopManager.xterm.enable = false;
 }
