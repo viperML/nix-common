@@ -33,6 +33,7 @@
         flake-path = ./modules/home-manager/flake-path.nix;
         xdg = ./modules/home-manager/xdg.nix;
         sane = ./modules/home-manager/sane.nix;
+        hm-shim = ./modules/home-manager/hm-shim.nix;
       };
     in
       defaultModules
