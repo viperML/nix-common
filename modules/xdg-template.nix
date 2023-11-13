@@ -37,6 +37,7 @@ in {
     NUGET_PACKAGES = "${XDG_CACHE_HOME}/NuGetPackages";
     KERAS_HOME = "${XDG_STATE_HOME}/keras";
     SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
+    WINEPREFIX = "${XDG_DATA_HOME}/wine";
   };
 
   xdg_env = {
