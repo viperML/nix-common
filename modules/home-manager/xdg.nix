@@ -4,7 +4,7 @@ in {
   home.sessionVariables = template.env;
   xdg.enable = lib.mkDefault true;
   xdg.configFile = {
-    inherit (template) npmrc;
+    "npm/npmrc" = template.npmrc;
     "python/pythonrc" = template.pythonrc;
     "user-dirs.dirs" = template.user-dirs;
   };
