@@ -2,6 +2,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   boot.initrd.systemd.enable = lib.mkDefault (!config.boot.initrd.network.enable && !config.boot.initrd.services.swraid.enable && !config.boot.isContainer);
@@ -54,4 +55,8 @@
   ];
 
   services.xserver.desktopManager.xterm.enable = false;
+
+  environment.etc.issue.source = pkgs.writeText "issue" (with config.system.nixos; ''
+    ${distroName} ${release} ${codeName}
+  '');
 }
