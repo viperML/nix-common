@@ -7,4 +7,10 @@
   systemd.network.wait-online.enable = false;
   systemd.services.systemd-networkd.stopIfChanged = false;
   systemd.services.systemd-resolved.stopIfChanged = false;
+
+  # https://tailscale.com/kb/1019/subnets?tab=linux#enable-ip-forwarding
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = "1";
+    "net.ipv6.conf.all.forwarding" = "1";
+  };
 }
