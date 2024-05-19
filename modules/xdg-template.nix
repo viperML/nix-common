@@ -7,6 +7,7 @@ system: let
 in {
   env = {
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
+    ANDROID_USER_HOME = "${XDG_DATA_HOME}/android";
     # CABAL_CONFIG = "/dev/null";
     CABAL_DIR = "${XDG_DATA_HOME}/cabal";
     CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
@@ -38,6 +39,7 @@ in {
     KERAS_HOME = "${XDG_STATE_HOME}/keras";
     SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
     WINEPREFIX = "${XDG_DATA_HOME}/wine";
+    GUILE_HISTORY = "${XDG_STATE_HOME}/guile_history";
   };
 
   xdg_env = {
