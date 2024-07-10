@@ -20,6 +20,7 @@
         xdg = ./modules/nixos/xdg.nix;
         root-clean = ./modules/nixos/root-clean.nix;
         fhs = ./modules/nixos/fhs.nix;
+        i18n = ./modules/nixos/i18n.nix;
       };
     in
       defaultModules
