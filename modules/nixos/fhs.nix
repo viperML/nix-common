@@ -22,6 +22,15 @@
       fuse3
       nss
       expat
+
+      # zed
+      xorg.libxcb
+      libxkbcommon
+      libbsd
+      alsa-lib
+      xorg.libXau
+      xorg.libXdmcp
+      zstd
     ];
   };
 }
