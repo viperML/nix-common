@@ -59,9 +59,4 @@
   environment.etc.issue.source = pkgs.writeText "issue" (with config.system.nixos; ''
     ${distroName} ${release} ${codeName}
     '');
-
-  environment.sessionVariables = {
-    # use the daemon even when calling nix as root
-    NIX_REMOTE = "daemon";
-  };
 }

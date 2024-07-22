@@ -13,4 +13,6 @@
   builders-use-substitutes = true;
 
   auto-optimise-store = true;
+
+  store = "daemon";
 }
