@@ -14,5 +14,5 @@
 
   auto-optimise-store = true;
 
-  store = "daemon";
+  # store = "daemon";
 }
