@@ -59,4 +59,6 @@
   environment.etc.issue.source = pkgs.writeText "issue" (with config.system.nixos; ''
     ${distroName} ${release} ${codeName}
     '');
+
+  programs.command-not-found.enable = false;
 }
