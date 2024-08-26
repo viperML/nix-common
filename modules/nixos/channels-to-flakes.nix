@@ -19,7 +19,7 @@
     nix = {
       registry = lib.listToAttrs (map (name: lib.nameValuePair name {flake = inputs.${name};}) config.nix.inputsToPin);
       settings."flake-registry" = "/etc/nix/registry.json";
-      nixPath = ["nixpkgs=nixpkgs=flake:nixpkgs"];
+      nixPath = ["nixpkgs=flake:nixpkgs"];
     };
 
     environment = {
