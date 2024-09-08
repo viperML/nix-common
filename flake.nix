@@ -12,15 +12,16 @@
     nixosModules = let
       defaultModules = {
         channels-to-flakes = ./modules/nixos/channels-to-flakes.nix;
+        fhs = ./modules/nixos/fhs.nix;
+        firewall-report = ./modules/nixos/firewall-report.nix;
         hm-shim = ./modules/nixos/hm-shim.nix;
+        i18n = ./modules/nixos/i18n.nix;
         network = ./modules/nixos/network.nix;
+        root-clean = ./modules/nixos/root-clean.nix;
         sane = ./modules/nixos/sane.nix;
         ssh = ./modules/nixos/ssh.nix;
         well-known = ./modules/nixos/well-known.nix;
         xdg = ./modules/nixos/xdg.nix;
-        root-clean = ./modules/nixos/root-clean.nix;
-        fhs = ./modules/nixos/fhs.nix;
-        i18n = ./modules/nixos/i18n.nix;
       };
     in
       defaultModules
@@ -32,9 +33,9 @@
       defaultModules = {
         channels-to-flakes = ./modules/home-manager/channels-to-flakes.nix;
         flake-path = ./modules/home-manager/flake-path.nix;
-        xdg = ./modules/home-manager/xdg.nix;
-        sane = ./modules/home-manager/sane.nix;
         hm-shim = ./modules/home-manager/hm-shim.nix;
+        sane = ./modules/home-manager/sane.nix;
+        xdg = ./modules/home-manager/xdg.nix;
       };
     in
       defaultModules
