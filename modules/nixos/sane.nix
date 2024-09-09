@@ -58,7 +58,14 @@
 
   environment.etc.issue.source = pkgs.writeText "issue" (with config.system.nixos; ''
     ${distroName} ${release} ${codeName}
-    '');
+  '');
 
   programs.command-not-found.enable = false;
+
+  systemd.services.nix-daemon = {
+    environment = {
+      HOME = "/nix/var/nix/nix-daemon";
+      XDG_CACHE_HOME = "/nix/var/nix/nix-daemon";
+    };
+  };
 }

@@ -26,5 +26,9 @@
       # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/programs/environment.nix#L20
       variables.NIXPKGS_CONFIG = lib.mkForce "";
     };
+
+    nix.channel = {
+      enable = false;
+    };
   };
 }
