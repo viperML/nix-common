@@ -21,9 +21,6 @@
     info.enable = lib.mkForce false;
   };
 
-  # Mostly useless and breaks stuff
-  environment.noXlibs = false;
-
   hardware.pulseaudio.enable = false;
 
   time.timeZone = lib.mkDefault "UTC";
