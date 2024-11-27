@@ -6,6 +6,6 @@ in {
   xdg.configFile = {
     "npm/npmrc" = template.npmrc;
     "python/pythonrc" = template.pythonrc;
-    "user-dirs.dirs" = template.user-dirs;
+    # "user-dirs.dirs" = template.user-dirs; # FIXME
   };
 }
