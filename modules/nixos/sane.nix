@@ -21,7 +21,7 @@
     info.enable = lib.mkForce false;
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = lib.mkForce false;
 
   time.timeZone = lib.mkDefault "UTC";
 
