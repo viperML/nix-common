@@ -15,7 +15,6 @@
         fhs = ./modules/nixos/fhs.nix;
         firewall-report = ./modules/nixos/firewall-report.nix;
         hm-shim = ./modules/nixos/hm-shim.nix;
-        i18n = ./modules/nixos/i18n.nix;
         network = ./modules/nixos/network.nix;
         root-clean = ./modules/nixos/root-clean.nix;
         sane = ./modules/nixos/sane.nix;
