@@ -29,3 +29,5 @@ if readline.get_current_history_length() == 0:
             pass
 
     atexit.register(write_history)
+
+# vim: ft=python
