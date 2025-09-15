@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.envfs.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -31,6 +32,13 @@
       xorg.libXau
       xorg.libXdmcp
       zstd
+
+      # manylinux2014
+      xorg.libICE
+      xorg.libSM
+      xorg.libX11
+      xorg.libXext
+      xorg.libXrender
     ];
   };
 }
