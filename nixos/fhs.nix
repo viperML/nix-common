@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  services.envfs.enable = true;
+  # services.envfs.enable = true;
 
   environment.systemPackages = with pkgs; [
     fuse
