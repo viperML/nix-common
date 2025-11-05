@@ -1,9 +1,9 @@
 system: let
-  XDG_DATA_HOME = "$HOME/.local/share";
-  XDG_CONFIG_HOME = "$HOME/.config";
-  XDG_CACHE_HOME = "$HOME/.cache";
-  XDG_STATE_HOME = "$HOME/.local/state";
-  XDG_RUNTIME_DIR = "$XDG_RUNTIME_DIR";
+  XDG_DATA_HOME = "\${HOME}/.local/share";
+  XDG_CONFIG_HOME = "\${HOME}/.config";
+  XDG_CACHE_HOME = "\${HOME}/.cache";
+  XDG_STATE_HOME = "\${HOME}/.local/state";
+  XDG_RUNTIME_DIR = "\${XDG_RUNTIME_DIR}";
 in {
   env = {
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
@@ -16,7 +16,7 @@ in {
     GRADLE_USER_HOME = "${XDG_DATA_HOME}/gradle";
     HISTFILE = "${XDG_DATA_HOME}/bash/history";
     IPYTHONDIR = "${XDG_CONFIG_HOME}/ipython";
-    JULIA_DEPOT_PATH = "${XDG_DATA_HOME}/julia:$JULIA_DEPOT_PATH";
+    JULIA_DEPOT_PATH = "${XDG_DATA_HOME}/julia";
     JUPYTER_CONFIG_DIR = "${XDG_CONFIG_HOME}/jupyter";
     KDEHOME = "${XDG_CONFIG_HOME}/kde";
     LESSHISTFILE = "${XDG_DATA_HOME}/less/history";
@@ -40,6 +40,8 @@ in {
     SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
     WINEPREFIX = "${XDG_DATA_HOME}/wine";
     GUILE_HISTORY = "${XDG_STATE_HOME}/guile_history";
+    PSQL_HISTORY = "${XDG_DATA_HOME}/psql_history";
+    DOTNET_CLI_HOME = "${XDG_DATA_HOME}/dotnet";
   };
 
   xdg_env = {
