@@ -42,6 +42,7 @@ in {
     GUILE_HISTORY = "${XDG_STATE_HOME}/guile_history";
     PSQL_HISTORY = "${XDG_DATA_HOME}/psql_history";
     DOTNET_CLI_HOME = "${XDG_DATA_HOME}/dotnet";
+    GDBHISTFILE = "${XDG_CACHE_HOME}/gdb_history";
   };
 
   xdg_env = {
