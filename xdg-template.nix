@@ -21,7 +21,6 @@ in {
     KDEHOME = "${XDG_CONFIG_HOME}/kde";
     LESSHISTFILE = "${XDG_DATA_HOME}/less/history";
     NPM_CONFIG_CACHE = "${XDG_CACHE_HOME}/npm";
-    NPM_CONFIG_TMP = "${XDG_RUNTIME_DIR}/npm";
     NPM_CONFIG_USERCONFIG = "${XDG_CONFIG_HOME}/npm/npmrc";
     PYTHONSTARTUP =
       if system == "nixos"
