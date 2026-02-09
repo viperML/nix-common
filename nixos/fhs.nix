@@ -25,20 +25,20 @@
       expat
 
       # zed
-      xorg.libxcb
+      libxcb
       libxkbcommon
       libbsd
       alsa-lib
-      xorg.libXau
-      xorg.libXdmcp
+      libxau
+      libxdmcp
       zstd
 
       # manylinux2014
-      xorg.libICE
-      xorg.libSM
-      xorg.libX11
-      xorg.libXext
-      xorg.libXrender
+      libice
+      libsm
+      libx11
+      libxext
+      libxrender
     ];
   };
 }
