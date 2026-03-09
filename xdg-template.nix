@@ -41,6 +41,7 @@ in {
     DOTNET_CLI_HOME = "${XDG_DATA_HOME}/dotnet";
     GDBHISTFILE = "${XDG_CACHE_HOME}/gdb_history";
     ANSIBLE_HOME = "${XDG_DATA_HOME}/ansible";
+    WGETRC = "/etc/wgetrc";
   };
 
   xdg_env = {
@@ -56,5 +57,9 @@ in {
     prefix=''${XDG_DATA_HOME}/npm
     cache=''${XDG_CACHE_HOME}/npm
     init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
+  '';
+
+  wgetrc.text = ''
+    hsts-file = /dev/null
   '';
 }

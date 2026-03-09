@@ -5,7 +5,7 @@ in
   environment.sessionVariables = template.env // template.xdg_env;
 
   environment.etc = {
-    inherit (template) npmrc;
+    inherit (template) npmrc wgetrc;
     "xdg/user-dirs.defaults".text = ''
       DESKTOP=Desktop
       DOCUMENTS=Documents
