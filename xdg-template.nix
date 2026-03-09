@@ -20,12 +20,10 @@ in {
     JUPYTER_CONFIG_DIR = "${XDG_CONFIG_HOME}/jupyter";
     KDEHOME = "${XDG_CONFIG_HOME}/kde";
     LESSHISTFILE = "${XDG_DATA_HOME}/less/history";
+    NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
     NPM_CONFIG_CACHE = "${XDG_CACHE_HOME}/npm";
     NPM_CONFIG_USERCONFIG = "${XDG_CONFIG_HOME}/npm/npmrc";
-    PYTHONSTARTUP =
-      if system == "nixos"
-      then "/etc/pythonrc"
-      else "${XDG_CONFIG_HOME}/python/pythonrc";
+    PYTHON_HISTORY = "${XDG_CACHE_HOME}/python_history";
     STEPPATH = "${XDG_DATA_HOME}/step";
     VSCODE_EXTENSIONS = "${XDG_DATA_HOME}/code/extensions";
     XCOMPOSECACHE = "${XDG_CACHE_HOME}/X11/xcompose";
@@ -59,6 +57,4 @@ in {
     cache=''${XDG_CACHE_HOME}/npm
     init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
   '';
-
-  pythonrc.text = builtins.readFile ./pythonrc;
 }
