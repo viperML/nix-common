@@ -3,54 +3,44 @@ system: let
   XDG_CONFIG_HOME = "\${HOME}/.config";
   XDG_CACHE_HOME = "\${HOME}/.cache";
   XDG_STATE_HOME = "\${HOME}/.local/state";
-  XDG_RUNTIME_DIR = "\${XDG_RUNTIME_DIR}";
 in {
   env = {
+    # CABAL_CONFIG = "/dev/null";
     ANDROID_HOME = "${XDG_DATA_HOME}/android";
     ANDROID_USER_HOME = "${XDG_DATA_HOME}/android";
-    # CABAL_CONFIG = "/dev/null";
+    ANSIBLE_HOME = "${XDG_DATA_HOME}/ansible";
     CABAL_DIR = "${XDG_DATA_HOME}/cabal";
+    CARGO_HOME = "${XDG_DATA_HOME}/cargo";
     CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
+    DOTNET_CLI_HOME = "${XDG_DATA_HOME}/dotnet";
     ERRFILE = "${XDG_CACHE_HOME}/X11/xsession-errors";
+    GDBHISTFILE = "${XDG_CACHE_HOME}/gdb_history";
     GNUPGHOME = "${XDG_DATA_HOME}/gnupg";
+    GOPATH = "${XDG_DATA_HOME}/go";
     GRADLE_USER_HOME = "${XDG_DATA_HOME}/gradle";
+    GUILE_HISTORY = "${XDG_STATE_HOME}/guile_history";
     HISTFILE = "${XDG_DATA_HOME}/bash/history";
+    INPUTRC = "${XDG_CONFIG_HOME}/readline/inputrc";
     IPYTHONDIR = "${XDG_CONFIG_HOME}/ipython";
     JULIA_DEPOT_PATH = "${XDG_DATA_HOME}/julia";
     JUPYTER_CONFIG_DIR = "${XDG_CONFIG_HOME}/jupyter";
     KDEHOME = "${XDG_CONFIG_HOME}/kde";
+    KERAS_HOME = "${XDG_STATE_HOME}/keras";
     LESSHISTFILE = "${XDG_DATA_HOME}/less/history";
-    NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
+    NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
     NPM_CONFIG_CACHE = "${XDG_CACHE_HOME}/npm";
+    NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
     NPM_CONFIG_USERCONFIG = "${XDG_CONFIG_HOME}/npm/npmrc";
+    NUGET_PACKAGES = "${XDG_CACHE_HOME}/NuGetPackages";
+    PLATFORMIO_CORE_DIR = "${XDG_DATA_HOME}/platformio";
+    PSQL_HISTORY = "${XDG_DATA_HOME}/psql_history";
     PYTHON_HISTORY = "${XDG_CACHE_HOME}/python_history";
+    SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
     STEPPATH = "${XDG_DATA_HOME}/step";
     VSCODE_EXTENSIONS = "${XDG_DATA_HOME}/code/extensions";
-    XCOMPOSECACHE = "${XDG_CACHE_HOME}/X11/xcompose";
-    INPUTRC = "${XDG_CONFIG_HOME}/readline/inputrc";
-    GOPATH = "${XDG_DATA_HOME}/go";
-    CARGO_HOME = "${XDG_DATA_HOME}/cargo";
-    NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
-    PLATFORMIO_CORE_DIR = "${XDG_DATA_HOME}/platformio";
-    NUGET_PACKAGES = "${XDG_CACHE_HOME}/NuGetPackages";
-    KERAS_HOME = "${XDG_STATE_HOME}/keras";
-    SQLITE_HISTORY = "${XDG_CACHE_HOME}/sqlite_history";
-    WINEPREFIX = "${XDG_DATA_HOME}/wine";
-    GUILE_HISTORY = "${XDG_STATE_HOME}/guile_history";
-    PSQL_HISTORY = "${XDG_DATA_HOME}/psql_history";
-    DOTNET_CLI_HOME = "${XDG_DATA_HOME}/dotnet";
-    GDBHISTFILE = "${XDG_CACHE_HOME}/gdb_history";
-    ANSIBLE_HOME = "${XDG_DATA_HOME}/ansible";
     WGETRC = "/etc/wgetrc";
-  };
-
-  xdg_env = {
-    inherit
-      XDG_DATA_HOME
-      XDG_CONFIG_HOME
-      XDG_CACHE_HOME
-      XDG_STATE_HOME
-      ;
+    WINEPREFIX = "${XDG_DATA_HOME}/wine";
+    XCOMPOSECACHE = "${XDG_CACHE_HOME}/X11/xcompose";
   };
 
   npmrc.text = ''
